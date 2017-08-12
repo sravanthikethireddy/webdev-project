@@ -6,6 +6,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 // require("./utilities/filelist");
+var passport = require('passport');
+var cookieParser = require('cookie-parser');
+var session      = require('express-session');
+app.use(session({secret:'process.env.SESSION_SECRET',resave:true,saveUninitialized:true}));
+app.use(cookieParser());
+app.use(passport.initiaize());
+app.use(passport.session());
+// app.use(session({ secret: process.env.SESSION_SECRET }));
+
 
 // var connectionString ='assignment';
 // var mongoose = require("mongoose");
@@ -14,7 +23,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 require("./test/app.js")(app);
-require("./assignment/app.js")(app);
+require("./server/app.js")(app);
 
 var port = process.env.PORT || 3000;
 

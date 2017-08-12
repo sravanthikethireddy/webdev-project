@@ -1,5 +1,6 @@
-var app = require('./express');
-var express = app.express;
+var express = require('express');
+// var express = app.express;
+var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,7 +12,7 @@ var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 app.use(session({secret:'process.env.SESSION_SECRET',resave:true,saveUninitialized:true}));
 app.use(cookieParser());
-app.use(passport.initiaize());
+app.use(passport.initialize());
 app.use(passport.session());
 // app.use(session({ secret: process.env.SESSION_SECRET }));
 

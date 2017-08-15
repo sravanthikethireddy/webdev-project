@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="mozzie">
+<html lang="en" ng-app="mozzie" xmlns:color="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width
@@ -9,6 +9,10 @@ user-scalable = no, initial-scale = 1.0, maximum-scale=1.0">
     <link href="js/bootstrap.css" rel="stylesheet">
     <link href="js/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootsrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap-4.0.0-alpha.6-dist/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>-->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>-->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>-->
@@ -24,10 +28,17 @@ user-scalable = no, initial-scale = 1.0, maximum-scale=1.0">
     <script src="js/angular-route.js"></script>
     <script src="js/jQuery.js"></script>
     <script src="js/jQuery.ui.js"></script>
-
+    <script
+            src="https://code.jquery.com/jquery-1.12.4.js"
+            integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-1.12.4.js"
+            integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
     <!--<script src ="../vendor/angular/angular.js"></script>-->
     <script src="app.js"></script>
@@ -42,13 +53,88 @@ user-scalable = no, initial-scale = 1.0, maximum-scale=1.0">
     <script src="services/user.service.client.js"></script>
 </head>
 
-<body ng-controller="HeaderController as model">
-<nav class="navbar navbar-default navbar-toggleable-sm">
-    <button class="navbar-toggle navbar-toggler-right" data-toggle="collapse" data-target=".dual-collapse">
-    <span class="navbar-toggler-icon"></span>
+<body ng-controller="HeaderController as model"> <!--background="images/color.gif">-->
+<nav class="navbar navbar-default navbar-toggleable-sm navbar-inverse">
+    <button class="navbar-toggler navbar-toggler-left" data-toggle="collapse" data-target=".dual-collapse"
+            type="button">
+        <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="navbar-collapse dual-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" ng-if="model.activeUser.role=='ADMIN'" ng-repeat="m in model.userMenu"
+                ng-class="model.activeMenu.active==m.title?'active':''">
+                <a class="nav-link" href="{{m.url}}">
+                    {{m.title}}
+                </a>
+            </li>
+            <li class="nav-item" ng-if="model.activeUser.role=='ARTIST'"  ng-repeat="m in model.userMenu"
+                ng-class="model.activeMenu.active==m.title?'active':''">
+                <a class="nav-link" href="{{m.url}}">
+                    {{m.title}}
+                </a>
+            </li>
+            <li class="nav-item" ng-if="model.activeUser.role=='USER'"  ng-repeat="m in model.userMenu"
+                ng-class="model.activeMenu.active==m.title?'active':''">
+                <a class="nav-link" href="{{m.url}}">
+                    {{m.title}}
+                </a>
+            </li>
+            <li class="nav-item" ng-if="!model.activeUser._id"  ng-repeat="m in model.guestMenu"
+                ng-class="model.activeMenu.active==m.title?'active':''">
+                <a class="nav-link" href="{{m.url}}">
+                    {{m.title}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-collapse dual-collapse collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#!profile">
+                    <b>{{model.activeUser.username}}
+                    </b></a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar ml-auto">
+        <ul class="navbar-nav">
+            <li ng-if="model.activeUser._id" class="nav-item dropdown">
 
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink"
+                   aria-expanded="false">
+                    <div class="d-inline-block">
+                        <b class="text-box em d-inline green">{{model.messageCount.value}}</b>
+                        <img class="img-default" src="images/user_image.png||{{model.activeUser.picture}}"/>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu right light-blue z-index:1200" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#!profile">Profile</a>
+                    <!--<a class="dropdown-item" href="#!profile">Profile</a>-->
+                    <!--<a class="dropdown-item" href="#!profile">Profile</a>-->
+                    <a class="dropdown-item" href="#!message">Messages</a>
+                    <a class="dropdown-item" href="#!logout">Logout</a>
+                </div>
+            </li>
+            <li ng-if="!model.activeUser._id">
+                <a class="nav-link" href="#!/login">
+                    <img class="img-default" src="images/user_image.png"/>
+
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
-
+<nav class="navbar navbar-default navbar-inverse fixed-top">
+    <div class="input-group transparent">
+        <input class="form-control"
+               ng-model="model.searchWord"
+               type="text"
+               placeholder="Search">
+        <div class="ngclick input-group-addon" ng-click="model.searchWord">
+        <span class="glyphicon glyphicon-search"></span>
+        </div>
+    </div>
+</nav>
 </body>
 </html>

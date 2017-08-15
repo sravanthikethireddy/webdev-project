@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="card-columns my-5" ng-show="model.songs.length!=0">
+    <div class="card" style="background: black" ng-if="song.mbid!='' " ng-repeat="song in model.songs">
+        <a href="#!/song/{{song.mbid}}">
+            <img class="card-img-top" src="{{model.getThumbnail(song)}}" alt="{{song.name}}">
+        </a>
+        <div class="card-block">
+            <h4 class="card-title light-blue">{{song.name}}</h4>
+            <p class="card-text">
+                <a class="text-primary"
+                   role="button"
+                   ng-click="model.viewArtist(song)">
+                    {{song.artist.name}}
+                </a>
+            </p>
+            <a class="btn btn-primary" ng-show={{song.stream.playsong}}" href="{{song.stream['#text']}}">
+                Play
+            </a>
+        </div>
+    </div>
+</div>

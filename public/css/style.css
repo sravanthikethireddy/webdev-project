@@ -1,67 +1,101 @@
-body{
-    padding-top: 80px;
+body {
+    /*padding-top: 80px;*/
     /*color: #2b669a;*/
-    padding-bottom: 80px;
-}
+    padding-bottom: 50px;
+    background-image: url("../images/color.gif");
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-size: cover;
+    background-repeat:no-repeat ;
+    background-attachment: fixed;
 
+    /*background-position: center;*/
+    /*background-size: auto;*/
+}
+selector{
+    height: 100%;
+    width: 100%;
+    /*background-size: cover;*/
+}
 
 /*.navbar-header.navbar-fixed-top{*/
-    /*color: #2e6da4;*/
+/*color: #2e6da4;*/
 /*}*/
-nav{
+nav {
     background-color: #2e6da4;
 }
-.navbar-brand{
+.navbar-default{
+    margin: 0;
+    padding: 0;
+    height: 20px;
+    border-bottom-color: gainsboro;
+}
+.navbar-default .navbar-text{
+    color: gainsboro;
+}
+.navbar-default .navbar-brand{
+    color: gainsboro;
+}
+.navbar-default .navbar-nav>li>a{
+    color: gainsboro;
+}
+.navbar-brand {
     color: white;
 }
-.white{
+
+.white {
     color: white;
 }
-input.form-control
-{
+
+input.form-control {
     margin-bottom: 5px;
 }
+
 /*li.boderless{*/
-    /*border-top: 0 none;*/
+/*border-top: 0 none;*/
 /*!*}*!*/
-.verticalLine{
-    border-right: solid   ;
+.verticalLine {
+    border-right: solid;
 }
+
 /*.col-sm-8.container-fluid{*/
-    /*border-left: solid;*/
-    /*height: 800px;*/
+/*border-left: solid;*/
+/*height: 800px;*/
 /*}*/
-.widget-toolbar{
+.widget-toolbar {
     position: absolute;
     background-color: white;
     right: 20px;
-    border-bottom-right-radius:5px ;
+    border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-.black{
+.black {
     color: black;
 }
 
-.ngclick{
- cursor: pointer;
+.ngclick {
+    cursor: pointer;
 }
 
-.selector{
+.selector {
     width: auto;
-    height:auto;
+    height: auto;
 }
-/*.gif-container {*/
-    /*background: url("/CS5610/neu/webdev/public/assignment/views/homepage/b2d4a353d922f7f1dd92594dbb0e129c.gif") center;*/
-    /*background-size: cover;*/
 
-    /*height: 100%;*/
+/*.gif-container {*/
+/*background: url("/CS5610/neu/webdev/public/assignment/views/homepage/b2d4a353d922f7f1dd92594dbb0e129c.gif") center;*/
+/*background-size: cover;*/
+
+/*height: 100%;*/
 /*}*/
 .youtube-widget {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
 }
+
 .youtube-widget iframe {
     position: absolute;
     top: 0;
@@ -70,3 +104,39 @@ input.form-control
     height: 100%;
 }
 
+.text-box {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: auto;
+    padding-right: 40px;
+    padding-left: 50px
+}
+
+.red{
+    color: red;
+}
+
+.blue{
+    color: dodgerblue;
+}
+
+.light-blue{
+    background-color: lightblue;
+}
+
+.green{
+    color: green;
+}
+
+.img-default{
+    width:20px;
+    height:20px;
+
+}
+
+.img-profile{
+    border-radius: 40px;
+    width:60px;
+    height:60px;
+}

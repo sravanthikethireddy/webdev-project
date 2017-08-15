@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="container-fluid">
+    <div class="card-block">
+        <h2 class="text-justify">Profile</h2>
+        <img class="img-fluid"
+             src="{{'../../images/user_image.png'||model.user.picture}}"
+             alt="{{model.user.firstName}}">
+        <div class="card">
+            <div class="input-group">
+                <h3 class="col-4">Username</h3>
+                <input class="form-control"
+                       ng-model="model.user.username"
+                       placeholder="username"/>
+            </div>
 
-</body>
-</html>
+
+            <div class="input-group">
+                <h3 class="col-4">First Name</h3>
+                <input class="form-control"
+                       type="text"
+                       ng-model="model.user.firstName">
+            </div>
+
+            <div class="input-group">
+                <h3 class="col-4">Last Name</h3>
+                <input class="form-control"
+                       type="text"
+                       ng-model="model.user.lastName">
+            </div>
+
+
+            <div class="input-group">
+                <h3 class="col-4">Email</h3>
+                <input class="form-control"
+                       type="email"
+                       ng-model="model.user.email">
+            </div>
+
+            <a ng-click="model.updateProfile(model.user)"
+               class="btn btn-primary">Update</a>
+            <form name="uploadForm"
+                  action="/api/upload"
+                  method="post" enctype="multipart/form-data">
+                <div class="input-group">
+                    <input ng-model="model.widget.upload"
+                           id="myFile"
+                           name="myFile"
+                           class="form-control"
+                           type="file"
+                           accept=".jpg,.jpeg,.png,.pdf,.gif"
+                           placeholder=" "/>
+                    <button class="btn btn-primary">
+                        Update Image!
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

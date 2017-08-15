@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div ng-controller="HeaderController as model">
+    <nav class="navbar navbar-default navbar-toggleable-sm navbar-inverse">
+        <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target=".dual-collapse"
+                type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse dual-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!playlists">Playlists</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Artist</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Album</a>
+                </li>
 
-</body>
-</html>
+
+
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/profile">
+                        <img class="img-default" src="../../images/user_image.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-default navbar-inverse">
+        <div class="input-group transparent">
+            <input class="form-control"
+                   ng-model="model.searchWord"
+                   type="text"
+                   placeholder="Search">
+            <div class="ngclick input-group-addon" ng-click="model.searchWord(model.input,1)">
+                <span class="glyphicon glyphicon-search"></span>
+            </div>
+        </div>
+    </nav>
+</div>

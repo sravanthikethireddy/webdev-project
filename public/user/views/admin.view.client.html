@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<h2 class="my-auto mx-auto">Admin</h2>
+<ul class="list-group col-md-8 my-auto mx-auto">
+    <li class="list-group-item active">
+        Users
+    </li>
+    <li class="list-group-item" ng-repeat="user in model.users">
+        {{user.username}}
+        <label for="userRole">
+            <select class="custom-select my-auto mx-auto" id="userRole" ng-model="user.role">
+                <option value="ADMIN">Admin</option>
+                <option value="ARTIST">Artist</option>
+                <option value="USER">User</option>
+            </select>
+        </label>
+        <span class="glyphicon glyphicon-ok"
+              ng-click="model.updateUser(user)"
+              role="button">
+        </span>
+        <span class="glyphicon glyphicon-remove"
+              ng-click="model.deleteUser(user._id)">
+        </span>
+    </li>
+</ul>
